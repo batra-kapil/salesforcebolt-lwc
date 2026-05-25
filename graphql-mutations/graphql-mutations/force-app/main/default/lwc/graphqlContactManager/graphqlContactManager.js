@@ -1,7 +1,6 @@
 import { LightningElement, wire, track } from 'lwc';
 import { gql, graphql, executeMutation } from 'lightning/graphql';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
-import { refreshApex } from '@salesforce/apex';
 
 const CONTACTS_QUERY = gql`
     query GetContacts {
@@ -159,7 +158,8 @@ export default class GraphqlContactManager extends LightningElement {
         }
         this.isLoading = true;
         try {
-            const result = await executeMutation(this, CREATE_CONTACT, {
+            const { data, errors } = await executeMutation({
+                query: CREATE_CONTACT,
                 operationName: 'CreateContact',
                 variables: {
                     firstName: this.newFirstName || null,
@@ -167,7 +167,6 @@ export default class GraphqlContactManager extends LightningElement {
                     phone: this.newPhone || null
                 }
             });
-            const errors = result?.data?.uiapi?.ContactCreate?.errors;
             if (errors?.length) {
                 this.showToast('Error', errors[0].message, 'error');
             } else {
@@ -175,7 +174,7 @@ export default class GraphqlContactManager extends LightningElement {
                 this.newFirstName = '';
                 this.newLastName = '';
                 this.newPhone = '';
-                await refreshApex(this.wiredContacts);
+                this.wiredContacts.refresh();
             }
         } catch (e) {
             this.showToast('Error', e?.message ?? 'Unexpected error.', 'error');
@@ -205,14 +204,14 @@ export default class GraphqlContactManager extends LightningElement {
     async handleUpdateSave() {
         this.isLoading = true;
         try {
-            const result = await executeMutation(this, UPDATE_CONTACT, {
+            const { data, errors } = await executeMutation({
+                query: UPDATE_CONTACT,
                 operationName: 'UpdateContact',
                 variables: {
                     id: this.editRowId,
                     phone: this.editPhone
                 }
             });
-            const errors = result?.data?.uiapi?.ContactUpdate?.errors;
             if (errors?.length) {
                 this.showToast('Error', errors[0].message, 'error');
             } else {
@@ -237,11 +236,11 @@ export default class GraphqlContactManager extends LightningElement {
     async handleDelete(id) {
         this.isLoading = true;
         try {
-            const result = await executeMutation(this, DELETE_CONTACT, {
+            const { data, errors } = await executeMutation({
+                query: DELETE_CONTACT,
                 operationName: 'DeleteContact',
                 variables: { id }
             });
-            const errors = result?.data?.uiapi?.ContactDelete?.errors;
             if (errors?.length) {
                 this.showToast('Error', errors[0].message, 'error');
             } else {
