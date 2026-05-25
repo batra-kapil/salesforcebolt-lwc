@@ -1,4 +1,4 @@
-import { LightningElement, wire, track } from 'lwc';
+import { LightningElement, wire } from 'lwc';
 import { gql, graphql, executeMutation } from 'lightning/graphql';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 
@@ -112,13 +112,13 @@ export default class GraphqlContactManager extends LightningElement {
     columns = COLUMNS;
 
     // Create form fields
-    @track newFirstName = '';
-    @track newLastName = '';
-    @track newPhone = '';
+    newFirstName = '';
+    newLastName = '';
+    newPhone = '';
 
     // Inline edit state
-    @track editRowId = null;
-    @track editPhone = '';
+    editRowId = null;
+    editPhone = '';
 
     isLoading = false;
 
