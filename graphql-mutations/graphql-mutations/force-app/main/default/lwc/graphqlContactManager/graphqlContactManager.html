@@ -1,0 +1,99 @@
+<template>
+    <lightning-card title="GraphQL Contact Manager" icon-name="standard:contact">
+        <!-- Loading spinner overlay -->
+        <template if:true={isLoading}>
+            <div class="slds-spinner_container slds-is-fixed">
+                <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+            </div>
+        </template>
+
+        <div class="slds-var-p-around_medium">
+
+            <!-- ── CREATE SECTION ─────────────────────────────────── -->
+            <fieldset class="slds-box slds-theme_shade slds-var-m-bottom_medium">
+                <legend class="slds-text-heading_small slds-var-p-bottom_x-small">Create Contact</legend>
+                <div class="slds-grid slds-gutters slds-wrap">
+                    <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3">
+                        <lightning-input
+                            label="First Name"
+                            value={newFirstName}
+                            onchange={handleFirstNameChange}
+                        ></lightning-input>
+                    </div>
+                    <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3">
+                        <lightning-input
+                            label="Last Name"
+                            value={newLastName}
+                            required
+                            onchange={handleLastNameChange}
+                        ></lightning-input>
+                    </div>
+                    <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3">
+                        <lightning-input
+                            label="Phone"
+                            type="tel"
+                            value={newPhone}
+                            onchange={handlePhoneChange}
+                        ></lightning-input>
+                    </div>
+                </div>
+                <div class="slds-var-m-top_small">
+                    <lightning-button
+                        label="Create Contact"
+                        variant="brand"
+                        onclick={handleCreate}
+                        disabled={isLoading}
+                    ></lightning-button>
+                </div>
+            </fieldset>
+
+            <!-- ── INLINE EDIT SECTION (shown when a row is being edited) ── -->
+            <template if:true={editRowId}>
+                <fieldset class="slds-box slds-theme_info slds-var-m-bottom_medium">
+                    <legend class="slds-text-heading_small slds-var-p-bottom_x-small">Edit Phone</legend>
+                    <div class="slds-grid slds-gutters slds-align_absolute-center">
+                        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2">
+                            <lightning-input
+                                label="New Phone Number"
+                                type="tel"
+                                value={editPhone}
+                                onchange={handleInlinePhoneChange}
+                            ></lightning-input>
+                        </div>
+                    </div>
+                    <div class="slds-var-m-top_small slds-grid slds-gutters">
+                        <lightning-button
+                            label="Save"
+                            variant="success"
+                            onclick={handleUpdateSave}
+                            disabled={isLoading}
+                            class="slds-var-m-right_x-small"
+                        ></lightning-button>
+                        <lightning-button
+                            label="Cancel"
+                            onclick={handleUpdateCancel}
+                        ></lightning-button>
+                    </div>
+                </fieldset>
+            </template>
+
+            <!-- ── QUERY / TABLE SECTION ─────────────────────────── -->
+            <template if:true={hasContacts}>
+                <lightning-datatable
+                    key-field="id"
+                    data={contacts}
+                    columns={columns}
+                    hide-checkbox-column
+                    onrowaction={handleRowAction}
+                ></lightning-datatable>
+            </template>
+
+            <template if:false={hasContacts}>
+                <p class="slds-text-color_weak slds-text-align_center slds-var-p-top_medium">
+                    No contacts found. Create one above.
+                </p>
+            </template>
+
+        </div>
+    </lightning-card>
+</template>
