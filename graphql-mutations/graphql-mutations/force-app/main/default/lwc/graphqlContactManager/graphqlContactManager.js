@@ -28,7 +28,7 @@ const CONTACTS_QUERY = gql`
 `;
 
 const CREATE_CONTACT = gql`
-    mutation CreateContact($firstName: String, $lastName: String!, $phone: String) {
+    mutation CreateContact($firstName: String, $lastName: String!, $phone: PhoneNumber) {
         uiapi {
             ContactCreate(
                 input: {
@@ -55,7 +55,7 @@ const CREATE_CONTACT = gql`
 `;
 
 const UPDATE_CONTACT = gql`
-    mutation UpdateContact($id: ID!, $phone: String) {
+    mutation UpdateContact($id: ID!, $phone: PhoneNumber) {
         uiapi {
             ContactUpdate(input: { fields: { Id: $id, Phone: $phone } }) {
                 Record {
