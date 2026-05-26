@@ -69,9 +69,7 @@ const DELETE_CONTACT = gql`
     mutation DeleteContact($id: IdOrRef!) {
         uiapi {
             ContactDelete(input: { Id: $id }) {
-                Record {
-                    Id
-                }
+                Id
             }
         }
     }
