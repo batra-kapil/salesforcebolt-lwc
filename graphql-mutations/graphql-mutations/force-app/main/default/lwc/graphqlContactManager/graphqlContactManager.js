@@ -45,10 +45,6 @@ const CREATE_CONTACT = gql`
                         value
                     }
                 }
-                errors {
-                    message
-                    statusCode
-                }
             }
         }
     }
@@ -64,10 +60,6 @@ const UPDATE_CONTACT = gql`
                         value
                     }
                 }
-                errors {
-                    message
-                    statusCode
-                }
             }
         }
     }
@@ -79,10 +71,6 @@ const DELETE_CONTACT = gql`
             ContactDelete(input: { fields: { Id: $id } }) {
                 Record {
                     Id
-                }
-                errors {
-                    message
-                    statusCode
                 }
             }
         }
