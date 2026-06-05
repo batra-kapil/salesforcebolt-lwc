@@ -1,0 +1,32 @@
+mutation CreateCase($subject: String!, $status: Picklist!, $priority: Picklist!) {
+  uiapi {
+    CaseCreate(
+      input: {
+        Case: {
+          Subject: $subject
+          Status: $status
+          Priority: $priority
+        }
+      }
+    ) {
+      Record {
+        Id
+        CaseNumber {
+          value
+        }
+        Subject {
+          value
+        }
+        Status {
+          value
+        }
+        Priority {
+          value
+        }
+        CreatedDate {
+          value
+        }
+      }
+    }
+  }
+}

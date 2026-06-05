@@ -1,0 +1,7 @@
+mutation DeleteCase($id: IdOrRef!) {
+  uiapi {
+    CaseDelete(input: { Id: $id }) {
+      Id
+    }
+  }
+}

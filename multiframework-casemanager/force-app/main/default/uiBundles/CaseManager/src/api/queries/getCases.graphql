@@ -1,0 +1,29 @@
+query GetCases {
+  uiapi {
+    query {
+      Case(first: 10, orderBy: { CreatedDate: { order: DESC } }) {
+        edges {
+          node {
+            Id
+            CaseNumber {
+              value
+            }
+            Subject {
+              value
+            }
+            Status {
+              value
+            }
+            Priority {
+              value
+            }
+            CreatedDate {
+              value
+            }
+          }
+        }
+        totalCount
+      }
+    }
+  }
+}

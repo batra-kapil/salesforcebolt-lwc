@@ -1,0 +1,23 @@
+mutation UpdateCase($id: IdOrRef!, $status: Picklist!) {
+  uiapi {
+    CaseUpdate(
+      input: {
+        Id: $id
+        Case: {
+          Status: $status
+        }
+      }
+    ) {
+      Record {
+        Id
+        CaseNumber {
+          value
+        }
+        Status {
+          value
+        }
+      }
+      success
+    }
+  }
+}
