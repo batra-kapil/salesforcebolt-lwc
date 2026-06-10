@@ -11,7 +11,7 @@ This repository contains all Lightning Web Component examples built for the **SF
 | Topic | Folder | API Version | YouTube |
 |---|---|---|---|
 | GraphQL Mutations in LWC | [graphql-mutations](./graphql-mutations) | 67.0 | https://www.youtube.com/watch?v=Lu7JSCnXB2g |
-| Salesforce Multi-Framework React | [multiframework-casemanager](./multiframework-casemanager) | 67.0 | Coming soon |
+| Salesforce Multi-Framework React | [multiframework-casemanager](./multiframework-casemanager) | 67.0 | https://youtu.be/GAVNnXHYvGo?si=5A4tZE3rVGfBmpmE |
 
 ---
 
