@@ -12,6 +12,8 @@ This repository contains all Lightning Web Component examples built for the **SF
 |---|---|---|---|
 | GraphQL Mutations in LWC | [graphql-mutations](./graphql-mutations) | 67.0 | https://www.youtube.com/watch?v=Lu7JSCnXB2g |
 | Salesforce Multi-Framework React | [multiframework-casemanager](./multiframework-casemanager) | 67.0 | Coming soon |
+| Salesforce Skills — Case Escalation | [salesforce-skills-case-escalation](./salesforce-skills-case-escalation) | 67.0 | Coming soon |
+
 
 ---
 
