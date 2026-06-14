@@ -2,7 +2,7 @@
 
 > Built by [Kapil Batra](https://www.linkedin.com/in/hellokapil) | [SF Bolt YouTube Channel](https://www.youtube.com/@salesforcebolt)
 
-📺 **Watch the video:** Coming soon
+📺 **Watch the video:** [https://youtu.be/GAVNnXHYvGo?si=5A4tZE3rVGfBmpmE]
 🐙 **Repo:** [salesforcebolt-lwc/multiframework-casemanager](https://github.com/batra-kapil/salesforcebolt-lwc/tree/main/multiframework-casemanager)
 
 ---
